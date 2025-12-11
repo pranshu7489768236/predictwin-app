@@ -1,0 +1,17 @@
+.topbar{display:flex;justify-content:space-between;align-items:center;height:var(--topbar-height);padding:calc(env(safe-area-inset-top,0px)) 20px 0 20px;position:fixed;top:0;left:0;right:0;z-index:10000}
+.topbar .left{gap:12px}
+.menu-btn{background:transparent;border:0;color:var(--text);font-size:18px;padding:6px}
+.topbar .title strong{font-size:16px}
+.topbar .title small{display:block;color:var(--muted);font-size:12px}
+.topbar .right{align-items:center;gap:12px}
+.muted{color:var(--muted)}
+
+/* Topbar full-width appearance (remove rounded card look) */
+.topbar.card{border-radius:0;border:0;padding-left:20px;padding-right:20px;box-shadow:0 6px 18px rgba(2,6,23,0.12);background:var(--card)}
+
+/* Slight backdrop blur so header separates from content */
+.topbar{backdrop-filter:blur(6px)}
+
+/* Theme toggle button */
+.theme-icon-btn{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;cursor:pointer;padding:6px;color:var(--text)}
+.theme-icon-btn svg{width:18px;height:18px;display:block}

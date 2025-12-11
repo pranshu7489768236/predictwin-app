@@ -1,0 +1,24 @@
+<div class="content">
+  <h1 class="app-title">Register</h1>
+
+  <div class="section card">
+    <form class="form" (submit)="submit($event)">
+      <input class="input" placeholder="Mobile Number" [(ngModel)]="phone" name="phone" />
+      <div style="display:flex;gap:8px">
+        <input class="input" placeholder="Verification Code" [(ngModel)]="code" name="code" />
+        <button type="button" class="btn btn-ghost" (click)="sendOtp()" [disabled]="!isPhoneValid() || loading">Send OTP</button>
+      </div>
+      <input class="input" placeholder="Password" [(ngModel)]="password" name="password" />
+      <div class="small muted" *ngIf="phone && !isPhoneValid()">Enter a valid mobile number</div>
+      <div class="small muted" *ngIf="password && !isPasswordValid()">Password must be at least 6 characters</div>
+      <input class="input" placeholder="Referral Code (optional)" [(ngModel)]="referral" name="referral" />
+      <label style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" [(ngModel)]="agree" name="agree" />
+        <span class="small muted">I agree to Privacy Policy</span>
+      </label>
+      <div style="margin-top:12px">
+        <button class="btn btn-primary" type="submit" style="width:100%" [disabled]="!canRegister()">{{loading ? 'Please wait...' : 'Register'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

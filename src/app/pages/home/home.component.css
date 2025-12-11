@@ -1,0 +1,7 @@
+.content{padding:0}
+.slider img{transition:opacity .4s ease}
+.dots{display:flex;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.16);cursor:pointer}
+.dot.active{background:linear-gradient(90deg,var(--accent-1),var(--accent-2))}
+.mini-card{min-width:140px}
+.title{font-size:15px;margin-bottom:8px}

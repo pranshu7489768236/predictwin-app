@@ -1,0 +1,32 @@
+<header class="topbar card row">
+  <div class="left row">
+    <button class="menu-btn" aria-hidden="true">☰</button>
+    <div class="title">
+      <strong>COLORX</strong>
+      <small>Live Color Prediction</small>
+    </div>
+  </div>
+
+  <div class="right row">
+    <ng-container *ngIf="current$ | async as current">
+      <button type="button" class="theme-icon-btn" (click)="toggleTheme()" [attr.aria-pressed]="current === 'dark'" [attr.aria-label]="'Toggle theme, current ' + current" title="Toggle theme">
+        <svg *ngIf="current === 'dark'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" opacity="0.95"/>
+        </svg>
+        <svg *ngIf="current !== 'dark'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.95"/>
+          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="M4.2 4.2l1.4 1.4"/>
+            <path d="M18.4 18.4l1.4 1.4"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="M4.2 19.8l1.4-1.4"/>
+            <path d="M18.4 5.6l1.4-1.4"/>
+          </g>
+        </svg>
+      </button>
+    </ng-container>
+  </div>
+</header>

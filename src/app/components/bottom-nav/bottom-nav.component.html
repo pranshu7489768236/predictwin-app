@@ -1,0 +1,14 @@
+<div class="inner">
+    <button class="nav-btn" [class.active]="isActive('/home') || isActive('/')" (click)="navigate('/home')">
+      <img src="/assets/icon-home.svg" alt="home" />
+      <div class="nav-label">Home</div>
+    </button>
+    <button class="nav-btn" [class.active]="isActive('/search')" (click)="navigate('/search')">
+      <img src="/assets/icon-search.svg" alt="search" />
+      <div class="nav-label">Search</div>
+    </button>
+    <button class="nav-btn" [class.active]="isActive('/me')" (click)="navigate('/me')">
+      <img src="/assets/icon-user.svg" alt="me" />
+      <div class="nav-label">Me</div>
+    </button>
+  </div>

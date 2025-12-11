@@ -1,0 +1,24 @@
+<div class="content">
+  <h1 class="app-title">Me</h1>
+
+  <div class="section card">
+    <div class="title">Login</div>
+    <form class="form" (submit)="login($event)">
+      <input class="input" placeholder="Mobile number" [(ngModel)]="phone" name="phone" inputmode="tel" />
+      <input class="input" placeholder="Password" type="password" [(ngModel)]="password" name="password" />
+      <div class="small muted" *ngIf="phone && !isPhoneValid()">Enter a valid mobile number</div>
+      <div class="small muted" *ngIf="password && !isPasswordValid()">Password must be at least 6 characters</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <a routerLink="/forgot" class="small muted">Forgot password?</a>
+      </div>
+      <div style="margin-top:12px">
+        <button class="btn btn-primary" type="submit" style="width:100%" [disabled]="!canLogin()">{{loading ? 'Please wait...' : 'Login'}}</button>
+      </div>
+    </form>
+
+    <div style="margin-top:12px;text-align:center">
+      <span class="small muted">Don’t have an account? </span>
+      <a routerLink="/register" class="small" style="color:var(--accent-1);margin-left:6px">Register</a>
+    </div>
+  </div>
+</div>

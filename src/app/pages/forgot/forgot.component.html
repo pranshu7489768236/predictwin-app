@@ -1,0 +1,31 @@
+<div class="forgot-root">
+  <div class="card">
+    <h3>Forgot Password</h3>
+
+    <div *ngIf="step===1" class="step">
+      <p class="muted">Enter the mobile number linked to your account.</p>
+      <input class="input" type="text" placeholder="Mobile" [(ngModel)]="mobile" />
+      <div class="small muted" *ngIf="mobile && !isPhoneValid()">Enter a valid mobile number</div>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="sendOtp()" [disabled]="!isPhoneValid() || loading">Send OTP</button>
+      </div>
+    </div>
+
+    <div *ngIf="step===2" class="step">
+      <p class="muted">Enter OTP and choose a new password.</p>
+      <input class="input" type="text" placeholder="OTP" [(ngModel)]="otp" />
+      <div class="otp-row">
+        <div class="timer" *ngIf="!otpExpired">Resend in {{ otpTimer }}s</div>
+        <button class="resend" *ngIf="otpExpired" (click)="resendOtp()" [disabled]="loading">Resend OTP</button>
+      </div>
+      <input class="input" type="password" placeholder="New password" [(ngModel)]="password" />
+      <div class="small muted" *ngIf="otp && !isOtpValid()">Enter a valid OTP</div>
+      <div class="small muted" *ngIf="password && !isNewPasswordValid()">Password must be at least 6 characters</div>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="reset()" [disabled]="!isOtpValid() || !isNewPasswordValid() || loading || otpExpired">Reset Password</button>
+      </div>
+    </div>
+
+    <div *ngIf="message" class="msg">{{message}}</div>
+  </div>
+</div>

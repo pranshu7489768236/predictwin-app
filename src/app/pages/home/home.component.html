@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="space-between">
+    <h1 class="app-title">ColorX</h1>
+    <div class="subtitle">Mobile-first Color Prediction</div>
+  </div>
+
+  <div class="section">
+    <div class="slider card">
+      <img [src]="images[idx]" alt="slide">
+      <div class="dots">
+        <div *ngFor="let i of images; index as j" (click)="go(j)" [class.dot]="true" [class.active]="j===idx"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section card">
+    <div class="title">Trending Games</div>
+    <div class="horizontal-scroll">
+      <div class="mini-card" *ngFor="let g of trending">
+        <div style="font-weight:700">{{g.title}}</div>
+        <div class="small muted">{{g.subtitle}}</div>
+        <div style="margin-top:8px" class="btn btn-ghost">Prize {{g.prize}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section card">
+    <div class="title">Hot Colors</div>
+    <div class="horizontal-scroll" style="align-items:center;padding-top:8px">
+      <div *ngFor="let c of hotColors" class="mini-card" style="min-width:84px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div style="width:44px;height:44px;border-radius:10px;background:{{c}}"></div>
+        <div class="small muted" style="margin-top:8px">{{c}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section card">
+    <div class="title">Today's Wins</div>
+    <div *ngFor="let w of todaysWins" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.02)">
+      <div>{{w.user}}</div>
+      <div class="muted">{{w.win}}</div>
+    </div>
+  </div>
+
+</div>
