@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,14 +16,21 @@ export class MeComponent {
   password = '';
   loading = false;
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   login(e?: Event){
     e?.preventDefault();
     if(!this.canLogin()) return;
     this.loading = true;
     this.auth.login(this.phone, this.password).subscribe({
-      next: () => { this.loading = false; alert('Login success (server sets HttpOnly cookie)'); },
+      next: (res: any) => {
+        this.loading = false;
+        if (res && res.accessToken) {
+          this.auth.setToken(res.accessToken);
+        }
+        alert('Login success');
+        this.router.navigateByUrl('/');
+      },
       error: (err) => { this.loading = false; console.error(err); alert('Login failed'); }
     });
   }

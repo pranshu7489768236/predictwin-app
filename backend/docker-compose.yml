@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: predictwin
+      POSTGRES_USER: predictwin
+      POSTGRES_PASSWORD: predictwinpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/predictwin
+      SPRING_DATASOURCE_USERNAME: predictwin
+      SPRING_DATASOURCE_PASSWORD: predictwinpass
+      JWT_SECRET: replace_in_prod
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
